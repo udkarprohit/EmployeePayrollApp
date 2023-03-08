@@ -174,38 +174,8 @@
                 </div>
             </div>
         </form>
-        <script src="./javascript/payroll_index.js">
-            let day = document.querySelector("#day");
-            let month = document.querySelector("#month");
-            let year = document.querySelector("#year");
-            day.addEventListener('input', checkDate);
-            month.addEventListener('input', checkDate);
-            year.addEventListener('input', checkDate);
-            function checkDate() {
-                let dateError = document.querySelector(".startDate-error");
-                let date = day.value + " " + month.value + " " + year.value;
-                try {
-                    checkStartDate(new Date(Date.parse(date)));
-                    dateError.textContent = "";
-                } catch (e) {
-                    dateError.textContent = e;
-                }
-
-            }
-
-            function checkStartDate(startDate) {
-                let currentDate = new Date();
-                if (startDate > currentDate) {
-                    throw new Error("Start date is a future date")
-                }
-                let differnce = Math.abs(currentDate.getTime() - startDate.getTime());
-                let date = differnce / (1000 * 60 * 60 * 24);
-                if (date > 30) {
-                    throw new Error("Start date is beyond 30 days");
-                }
-            }
-        </script>
     </div>
+    <script src="./javascript/payroll_index.js"></script>
 </body>
 
 </html>
